@@ -73,19 +73,20 @@ const ProductDetails = () => {
     if (!product) return <div className="text-center py-12">Product not found</div>;
 
     return (
-        <div className="min-h-screen bg-gray-50 py-12">
+        <div className="min-h-screen bg-black pt-28 pb-20">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div className="bg-zinc-900/50 backdrop-blur-3xl rounded-[40px] shadow-2xl overflow-hidden border border-white/5 relative">
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-primary-600/10 rounded-full blur-[100px] -mr-32 -mt-32"></div>
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 relative z-10">
                         {/* Images */}
                         <div className="p-8">
                             <ImageGallery images={product.images} productName={product.title} />
                         </div>
 
                         {/* Details */}
-                        <div className="p-8">
-                            <p className="text-sm text-gray-500 uppercase tracking-wide mb-2">{product.brand}</p>
-                            <h1 className="mb-3">{product.title}</h1>
+                        <div className="p-10 lg:p-16 flex flex-col justify-center">
+                            <p className="text-primary-400 font-black uppercase tracking-[0.2em] text-sm mb-4">{product.brand}</p>
+                            <h1 className="text-4xl md:text-6xl font-black uppercase text-white tracking-tighter mb-6 leading-none">{product.title}</h1>
 
                             {/* Barcode - Inline below title */}
                             <div className="mb-4">
@@ -105,33 +106,38 @@ const ProductDetails = () => {
                                             </svg>
                                         ))}
                                     </div>
-                                    <span className="ml-2 text-gray-500">({product.numReviews} reviews)</span>
+                                    <span className="ml-3 text-zinc-500 font-bold uppercase tracking-widest text-xs">({product.numReviews} reviews)</span>
                                 </div>
                             )}
 
-                            <div className="mb-6">
-                                <span className="text-4xl font-bold text-black">${product.price}</span>
+                            <div className="mb-10">
+                                <span className="text-5xl font-black text-white tracking-tighter">£{product.price}</span>
                             </div>
 
-                            <div className="mb-6">
-                                <h3 className="font-semibold text-gray-900 mb-2">Description</h3>
-                                <p className="text-gray-600">{product.description}</p>
+                            <div className="mb-10">
+                                <h3 className="text-zinc-500 font-black uppercase tracking-widest text-sm mb-4">Description</h3>
+                                <p className="text-zinc-400 text-lg leading-relaxed font-medium">{product.description}</p>
                             </div>
 
                             {/* Size Selection */}
-                            <div className="mb-6">
-                                <h3 className="font-semibold text-gray-900 mb-3">Select Size</h3>
-                                <div className="grid grid-cols-5 gap-2">
+                            <div className="mb-10">
+                                <div className="flex items-center justify-between mb-4">
+                                    <h3 className="text-zinc-500 font-black uppercase tracking-widest text-sm">Select Size</h3>
+                                    {selectedSize && (
+                                        <span className="text-primary-400 font-bold">Selected: {selectedSize}</span>
+                                    )}
+                                </div>
+                                <div className="grid grid-cols-4 sm:grid-cols-5 gap-3">
                                     {product.sizes.map((size) => (
                                         <button
                                             key={size.size}
                                             onClick={() => setSelectedSize(size.size)}
                                             disabled={size.stock === 0}
-                                            className={`py-3 rounded-lg font-semibold transition-all ${selectedSize === size.size
-                                                ? 'bg-black text-white'
+                                            className={`py-4 rounded-xl font-black transition-all duration-300 border-2 ${selectedSize === size.size
+                                                ? 'bg-primary-600 border-primary-600 text-white shadow-lg shadow-primary-500/50 scale-105'
                                                 : size.stock > 0
-                                                    ? 'bg-gray-100 text-gray-900 hover:bg-gray-200'
-                                                    : 'bg-gray-50 text-gray-300 cursor-not-allowed line-through'
+                                                    ? 'bg-zinc-800/50 border-white/5 text-zinc-400 hover:border-primary-500/50 hover:text-white'
+                                                    : 'bg-zinc-900 border-transparent text-zinc-700 cursor-not-allowed line-through'
                                                 }`}
                                         >
                                             {size.size}
@@ -139,57 +145,59 @@ const ProductDetails = () => {
                                     ))}
                                 </div>
                                 {selectedSizeInfo && (
-                                    <p className="text-sm text-gray-500 mt-2">
-                                        {selectedSizeInfo.stock} in stock
+                                    <p className="text-sm text-zinc-500 mt-3 font-bold uppercase tracking-widest px-1">
+                                        Only {selectedSizeInfo.stock} units left in stock
                                     </p>
                                 )}
                             </div>
 
                             {/* Quantity */}
-                            <div className="mb-6">
-                                <h3 className="font-semibold text-gray-900 mb-3">Quantity</h3>
-                                <div className="flex items-center space-x-4">
-                                    <button
-                                        onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                                        className="w-10 h-10 rounded-lg bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-900"
-                                    >
-                                        -
-                                    </button>
-                                    <span className="text-xl font-semibold text-gray-900">{quantity}</span>
-                                    <button
-                                        onClick={() => setQuantity(Math.min(selectedSizeInfo?.stock || 1, quantity + 1))}
-                                        className="w-10 h-10 rounded-lg bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-900"
-                                    >
-                                        +
-                                    </button>
+                            <div className="mb-10">
+                                <h3 className="text-zinc-500 font-black uppercase tracking-widest text-sm mb-4">Quantity</h3>
+                                <div className="flex items-center space-x-6">
+                                    <div className="flex items-center bg-zinc-800/50 rounded-2xl p-1 border border-white/5">
+                                        <button
+                                            onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                                            className="w-12 h-12 rounded-xl bg-zinc-800 hover:bg-zinc-700 flex items-center justify-center text-white transition-colors"
+                                        >
+                                            <span className="text-2xl">-</span>
+                                        </button>
+                                        <span className="w-12 text-center text-xl font-black text-white">{quantity}</span>
+                                        <button
+                                            onClick={() => setQuantity(Math.min(selectedSizeInfo?.stock || 1, quantity + 1))}
+                                            className="w-12 h-12 rounded-xl bg-zinc-800 hover:bg-zinc-700 flex items-center justify-center text-white transition-colors"
+                                        >
+                                            <span className="text-2xl">+</span>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
 
                             {message.text && (
-                                <div className={`mb-4 px-4 py-3 rounded-lg ${message.type === 'success' ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-700'
+                                <div className={`mb-8 p-6 rounded-3xl font-bold uppercase tracking-widest text-xs border ${message.type === 'success' ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400' : 'bg-red-500/10 border-red-500/20 text-red-400'
                                     }`}>
                                     {message.text}
                                 </div>
                             )}
 
-                            <div className="flex space-x-4">
+                            <div className="flex flex-col sm:flex-row gap-4 mt-4">
                                 <Button
                                     variant="primary"
                                     onClick={handleAddToCart}
                                     disabled={addingToCart || product.totalStock === 0 || !selectedSize}
-                                    className="flex-1 bg-black hover:bg-gray-800 text-white"
+                                    className="flex-1 py-6 text-xl"
                                 >
                                     {addingToCart ? 'Adding...' : product.totalStock === 0 ? 'Out of Stock' : 'Add to Cart'}
                                 </Button>
-                                <Button variant="outline" onClick={() => navigate(-1)} className="border-gray-300 text-gray-700 hover:bg-gray-50">
-                                    Back
+                                <Button variant="outline" onClick={() => navigate(-1)} className="px-8 border-white/10 text-zinc-400 hover:bg-white/5 uppercase tracking-widest font-black text-xs">
+                                    Go Back
                                 </Button>
                             </div>
                         </div>
                     </div>
 
                     {/* Related Products Section */}
-                    <div className="p-8 border-t border-gray-100">
+                    <div className="p-10 lg:p-16 border-t border-white/5 bg-black/20">
                         <RelatedProducts
                             currentProductId={product._id}
                             category={product.category}

@@ -5,7 +5,7 @@ const ProductCard = ({ product, variant = 'standard' }) => {
     const isWideVariant = variant === 'wide';
 
     // Dynamic classes based on variant
-    const containerClasses = `group relative block h-full w-full overflow-hidden rounded-2xl transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl hover:shadow-gray-200 border border-gray-200 hover:border-gray-300 ${isWideVariant ? 'flex flex-row bg-white' : 'flex flex-col bg-white'
+    const containerClasses = `group relative block h-full w-full overflow-hidden rounded-2xl transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl hover:shadow-primary-500/10 border border-white/5 hover:border-white/20 ${isWideVariant ? 'flex flex-row bg-zinc-900' : 'flex flex-col bg-zinc-900'
         }`;
 
     const imageContainerClasses = `relative overflow-hidden ${isOverlayVariant ? 'absolute inset-0 h-full w-full' :
@@ -42,7 +42,7 @@ const ProductCard = ({ product, variant = 'standard' }) => {
                         </div>
                     )}
                     {product.totalStock === 0 && (
-                        <div className="bg-white/90 backdrop-blur-sm text-black px-3 py-1 rounded-full text-xs font-bold border border-gray-200">
+                        <div className="bg-black/60 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-bold border border-white/10">
                             Out of Stock
                         </div>
                     )}
@@ -50,7 +50,7 @@ const ProductCard = ({ product, variant = 'standard' }) => {
 
                 {/* Quick View Button (Hidden on mobile, visible on hover) */}
                 <div className={`absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20 ${isOverlayVariant ? 'mb-12' : ''}`}>
-                    <div className="bg-white text-black px-6 py-3 rounded-full text-sm font-bold shadow-xl transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 hover:bg-gray-100">
+                    <div className="bg-primary-600 text-white px-6 py-3 rounded-full text-sm font-bold shadow-xl transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 hover:bg-primary-500">
                         View Details
                     </div>
                 </div>
@@ -65,19 +65,19 @@ const ProductCard = ({ product, variant = 'standard' }) => {
                             {product.brand}
                         </p>
                         {product.rating > 0 && (
-                            <div className={`flex items-center gap-1 px-2 py-1 rounded-full ${isOverlayVariant ? 'bg-white/20 backdrop-blur-sm' : 'bg-gray-100'}`}>
+                            <div className={`flex items-center gap-1 px-2 py-1 rounded-full ${isOverlayVariant ? 'bg-white/10 backdrop-blur-sm' : 'bg-white/5'}`}>
                                 <svg className={`w-3 h-3 ${isOverlayVariant ? 'text-yellow-400' : 'text-yellow-500'} fill-current`} viewBox="0 0 20 20">
                                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                                 </svg>
-                                <span className={`text-xs font-bold ${isOverlayVariant ? 'text-white' : 'text-gray-900'}`}>{product.rating.toFixed(1)}</span>
+                                <span className={`text-xs font-bold ${isOverlayVariant ? 'text-white' : 'text-zinc-200'}`}>{product.rating.toFixed(1)}</span>
                             </div>
                         )}
                     </div>
 
                     {/* Title */}
-                    <h3 className={`font-bold leading-tight transition-colors duration-300 ${variant === 'featured' ? 'text-3xl text-white mb-2' :
+                    <h3 className={`font-black leading-tight transition-colors duration-300 uppercase tracking-tighter ${variant === 'featured' ? 'text-3xl text-white mb-2' :
                             variant === 'tall' ? 'text-2xl text-white' :
-                                'text-lg text-gray-900 group-hover:text-gray-700 line-clamp-2'
+                                'text-lg text-white group-hover:text-primary-400 line-clamp-2'
                         }`}>
                         {product.title}
                     </h3>
@@ -86,10 +86,10 @@ const ProductCard = ({ product, variant = 'standard' }) => {
                     <div className="flex items-baseline gap-2">
                         <span className={`font-extrabold ${isOverlayVariant ? 'text-white' : 'text-gray-900'
                             } ${variant === 'featured' ? 'text-3xl' : 'text-2xl'}`}>
-                            ${product.price}
+                            £{product.price}
                         </span>
-                        <span className={`text-sm line-through ${isOverlayVariant ? 'text-gray-400' : 'text-gray-400'}`}>
-                            ${(product.oldPrice || product.price * 1.3).toFixed(2)}
+                        <span className={`text-sm line-through ${isOverlayVariant ? 'text-gray-500' : 'text-gray-500'}`}>
+                            £{(product.oldPrice || product.price * 1.3).toFixed(2)}
                         </span>
                     </div>
 
@@ -100,8 +100,8 @@ const ProductCard = ({ product, variant = 'standard' }) => {
                                 <span
                                     key={index}
                                     className={`text-[10px] px-2 py-1 rounded-md font-semibold ${size.stock > 0
-                                            ? 'bg-gray-100 text-gray-900 border border-gray-200'
-                                            : 'bg-gray-50 text-gray-400 border border-gray-100 line-through'
+                                            ? 'bg-zinc-800 text-zinc-100 border border-zinc-700'
+                                            : 'bg-zinc-900 text-zinc-600 border border-zinc-800 line-through'
                                         }`}
                                 >
                                     {size.size}

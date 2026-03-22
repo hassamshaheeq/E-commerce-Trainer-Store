@@ -16,6 +16,10 @@ import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
 import Orders from './pages/Orders';
 import ProductVerification from './pages/ProductVerification';
+import Contact from './pages/Contact';
+import ShippingInfo from './pages/ShippingInfo';
+import Returns from './pages/Returns';
+import FAQ from './pages/FAQ';
 
 // Admin Pages
 import AdminLogin from './pages/admin/AdminLogin';
@@ -120,6 +124,10 @@ function App() {
                             </ProtectedRoute>
                         }
                     />
+                    <Route path="/contact" element={<Contact />} />
+                    <Route path="/shipping" element={<ShippingInfo />} />
+                    <Route path="/returns" element={<Returns />} />
+                    <Route path="/faq" element={<FAQ />} />
                 </Route>
 
                 {/* 404 */}

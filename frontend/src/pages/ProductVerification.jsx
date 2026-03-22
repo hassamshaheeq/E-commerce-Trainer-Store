@@ -50,7 +50,7 @@ const ProductVerification = () => {
                                 </svg>
                             </div>
                             <h1 className="text-4xl font-bold text-white mb-2">✓ AUTHENTIC PRODUCT</h1>
-                            <p className="text-green-100 text-lg">Verified by ShoeStore</p>
+                            <p className="text-green-100 text-lg">Verified by Primekicks</p>
                         </div>
 
                         {/* Order Details */}
@@ -78,7 +78,7 @@ const ProductVerification = () => {
                                     </div>
                                     <div>
                                         <p className="text-gray-400 text-sm">Total Amount</p>
-                                        <p className="text-white font-bold text-xl">${verification.totalAmount.toFixed(2)}</p>
+                                        <p className="text-white font-bold text-xl">£{verification.totalAmount.toFixed(2)}</p>
                                     </div>
                                 </div>
                             </div>
@@ -103,7 +103,7 @@ const ProductVerification = () => {
                                             </p>
                                         </div>
                                         <div className="text-right">
-                                            <p className="text-white font-bold text-xl">${(item.price * item.quantity).toFixed(2)}</p>
+                                            <p className="text-white font-bold text-xl">£{(item.price * item.quantity).toFixed(2)}</p>
                                             <div className="mt-2 inline-flex items-center px-3 py-1 bg-green-500/20 rounded-full">
                                                 <svg className="w-4 h-4 text-green-400 mr-1" fill="currentColor" viewBox="0 0 20 20">
                                                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
@@ -126,7 +126,7 @@ const ProductVerification = () => {
                                     <div>
                                         <h4 className="text-lg font-bold text-white mb-2">Authenticity Guaranteed</h4>
                                         <p className="text-gray-300">
-                                            This product has been verified as an authentic purchase from ShoeStore.
+                                            This product has been verified as an authentic purchase from Primekicks.
                                             The QR code contains a unique verification token that confirms the legitimacy of your order.
                                         </p>
                                         <p className="text-indigo-400 mt-2 font-semibold">

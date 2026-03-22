@@ -2,38 +2,35 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import Product from './models/Product.js';
 
-dotenv.config({ path: './.env' });
+dotenv.config();
 
-const updateProductImages = async () => {
-    try {
-        await mongoose.connect(process.env.MONGODB_URI);
-        console.log('MongoDB Connected');
+const updates = [
+  { title: "Womens Air Force 1", images: ["/uploads/products/w-nike-af1.png"] },
+  { title: "Adidas NMD_R1", images: ["/uploads/products/w-adidas-nmd.png"] },
+  { title: "Puma Mayze Thrifted", images: ["/uploads/products/w-puma-mayze.png"] },
+  { title: "Nike Pegasus 40", images: ["/uploads/products/w-nike-pegasus.png"] },
+  { title: "New Balance 574", images: ["/uploads/products/w-nb-574.png"] }
+];
 
-        // Find the first product (or a specific one like Golden Goose)
-        const product = await Product.findOne();
+const updateDB = async () => {
+  try {
+    await mongoose.connect(process.env.MONGODB_URI);
+    console.log('Connected to MongoDB');
 
-        if (product) {
-            console.log(`Updating images for product: ${product.title}`);
-
-            product.images = [
-                '/sample-shoe/front.png',
-                '/sample-shoe/side.png',
-                '/sample-shoe/back.png',
-                '/sample-shoe/top.png',
-                '/sample-shoe/detail.png'
-            ];
-
-            await product.save();
-            console.log('Product images updated successfully');
-        } else {
-            console.log('No products found to update');
-        }
-
-        process.exit();
-    } catch (error) {
-        console.error('Error:', error);
-        process.exit(1);
+    for (const item of updates) {
+      const result = await Product.updateMany(
+        { title: item.title, category: 'women' },
+        { $set: { images: item.images } }
+      );
+      console.log(`Updated ${item.title}: ${result.modifiedCount} documents`);
     }
+
+    console.log('Update complete');
+    process.exit(0);
+  } catch (err) {
+    console.error('Error updating:', err);
+    process.exit(1);
+  }
 };
 
-updateProductImages();
+updateDB();

@@ -7,11 +7,11 @@ const Footer = () => {
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                     {/* Brand */}
                     <div>
-                        <div className="flex items-center space-x-2 mb-4">
-                            <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
-                                <span className="text-black font-bold text-xl">S</span>
+                        <div className="flex items-center space-x-3 mb-6">
+                            <div className="w-12 h-12 rounded-xl overflow-hidden">
+                                <img src="/primekicks-logo.jpg" alt="Primekicks" className="w-full h-full object-cover" />
                             </div>
-                            <span className="text-2xl font-bold">ShoeStore</span>
+                            <span className="text-2xl font-black tracking-tighter uppercase">Primekicks</span>
                         </div>
                         <p className="text-gray-400 text-sm">
                             Premium footwear collection for men, women, and children. Quality shoes at great prices.
@@ -48,26 +48,26 @@ const Footer = () => {
                     {/* Customer Service */}
                     <div>
                         <h3 className="font-semibold text-lg mb-4">Customer Service</h3>
-                        <ul className="space-y-2">
+                        <ul className="space-y-4">
                             <li>
-                                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                                <Link to="/contact" className="text-gray-400 hover:text-primary-400 transition-colors uppercase tracking-widest text-xs font-bold">
                                     Contact Us
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                                <Link to="/shipping" className="text-gray-400 hover:text-primary-400 transition-colors uppercase tracking-widest text-xs font-bold">
                                     Shipping Info
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                                <Link to="/returns" className="text-gray-400 hover:text-primary-400 transition-colors uppercase tracking-widest text-xs font-bold">
                                     Returns
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                                <Link to="/faq" className="text-gray-400 hover:text-primary-400 transition-colors uppercase tracking-widest text-xs font-bold">
                                     FAQ
-                                </a>
+                                </Link>
                             </li>
                         </ul>
                     </div>
@@ -96,7 +96,7 @@ const Footer = () => {
                 </div>
 
                 <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400 text-sm">
-                    <p>&copy; {new Date().getFullYear()} ShoeStore. All rights reserved.</p>
+                    <p>&copy; {new Date().getFullYear()} Primekicks. All rights reserved.</p>
                 </div>
             </div>
         </footer>

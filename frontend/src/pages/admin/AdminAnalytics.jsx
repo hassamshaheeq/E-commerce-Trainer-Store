@@ -69,7 +69,7 @@ const AdminAnalytics = () => {
                     <div className="flex items-center justify-between">
                         <div>
                             <p className="text-green-100 text-sm">Total Revenue</p>
-                            <p className="text-3xl font-bold mt-2">${summary.totalRevenue.toFixed(2)}</p>
+                            <p className="text-3xl font-bold mt-2">£{summary.totalRevenue.toFixed(2)}</p>
                         </div>
                         <div className="text-4xl">💰</div>
                     </div>
@@ -87,7 +87,7 @@ const AdminAnalytics = () => {
                     <div className="flex items-center justify-between">
                         <div>
                             <p className="text-orange-100 text-sm">Avg Order Value</p>
-                            <p className="text-3xl font-bold mt-2">${summary.averageOrderValue.toFixed(2)}</p>
+                            <p className="text-3xl font-bold mt-2">£{summary.averageOrderValue.toFixed(2)}</p>
                         </div>
                         <div className="text-4xl">📊</div>
                     </div>
@@ -194,7 +194,7 @@ const AdminAnalytics = () => {
                                         </div>
                                     </td>
                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{product.totalSold}</td>
-                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-green-600 font-semibold">${product.revenue.toFixed(2)}</td>
+                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-green-600 font-semibold">£{product.revenue.toFixed(2)}</td>
                                 </tr>
                             ))}
                         </tbody>
@@ -221,7 +221,7 @@ const AdminAnalytics = () => {
                                 <tr key={order._id} className="hover:bg-gray-50">
                                     <td className="px-6 py-4 whitespace-nowrap text-sm font-mono text-gray-900">#{order._id.slice(-6)}</td>
                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{order.user?.name || 'N/A'}</td>
-                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-green-600 font-semibold">${order.totalAmount.toFixed(2)}</td>
+                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-green-600 font-semibold">£{order.totalAmount.toFixed(2)}</td>
                                     <td className="px-6 py-4 whitespace-nowrap">
                                         <span className={`px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${order.status === 'delivered' ? 'bg-green-100 text-green-800' :
                                             order.status === 'shipped' ? 'bg-blue-100 text-blue-800' :

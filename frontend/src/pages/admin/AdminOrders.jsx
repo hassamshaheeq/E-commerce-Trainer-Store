@@ -112,7 +112,7 @@ const AdminOrders = () => {
                                     </select>
                                 </div>
                                 <div className="flex items-center space-x-4">
-                                    <span className="text-2xl font-bold text-primary-600">${order.totalAmount.toFixed(2)}</span>
+                                    <span className="text-2xl font-bold text-primary-600">£{order.totalAmount.toFixed(2)}</span>
                                     <button
                                         onClick={() => handleDelete(order._id)}
                                         className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
@@ -133,7 +133,7 @@ const AdminOrders = () => {
                                             <p className="font-semibold">{item.title}</p>
                                             <p className="text-sm text-gray-500">Size: {item.size} × {item.quantity}</p>
                                         </div>
-                                        <span className="font-semibold">${(item.price * item.quantity).toFixed(2)}</span>
+                                        <span className="font-semibold">£{(item.price * item.quantity).toFixed(2)}</span>
                                     </div>
                                 ))}
                             </div>

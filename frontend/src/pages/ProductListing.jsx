@@ -49,24 +49,24 @@ const ProductListing = () => {
     if (loading) return <LoadingSpinner />;
 
     return (
-        <div className="min-h-screen bg-gray-100 pt-24 pb-16">
+        <div className="min-h-screen bg-black pt-28 pb-20">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header with Background Effect */}
-                <div className="mb-12 relative">
-                    <h1 className="mb-3 animate-fade-in">
+                <div className="mb-12 relative text-center">
+                    <h1 className="mb-4 animate-fade-in text-5xl md:text-7xl font-black uppercase tracking-tighter text-white">
                         {categoryTitles[category] || 'Products'}
                     </h1>
-                    <p className="text-gray-500 text-lg">
+                    <p className="text-zinc-500 text-lg max-w-2xl mx-auto border-none">
                         {categoryDescriptions[category] || `Discover our collection of ${filteredProducts.length} premium shoes`}
                     </p>
-                    <div className="mt-4 h-1 w-24 bg-black rounded-full"></div>
+                    <div className="mt-8 h-1.5 w-32 bg-primary-600 rounded-full mx-auto shadow-lg shadow-primary-500/50"></div>
                 </div>
 
                 {/* Filters - Enhanced Design */}
-                <div className="bg-white rounded-2xl shadow-lg p-6 mb-12 border border-gray-100">
+                <div className="bg-zinc-900/50 backdrop-blur-xl rounded-2xl p-6 mb-16 border border-white/5 shadow-2xl">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="relative">
-                            <svg className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg className="absolute left-5 top-1/2 transform -translate-y-1/2 w-5 h-5 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                             </svg>
                             <input
@@ -74,17 +74,17 @@ const ProductListing = () => {
                                 placeholder="Search by name or brand..."
                                 value={search}
                                 onChange={(e) => setSearch(e.target.value)}
-                                className="w-full pl-12 pr-4 py-3.5 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all"
+                                className="w-full pl-14 pr-6 py-4 bg-black/50 border border-white/10 rounded-xl text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-primary-600 focus:border-transparent transition-all shadow-inner"
                             />
                         </div>
                         <div className="relative">
-                            <svg className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg className="absolute left-5 top-1/2 transform -translate-y-1/2 w-5 h-5 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4h13M3 8h9m-9 4h6m4 0l4-4m0 0l4 4m-4-4v12" />
                             </svg>
                             <select
                                 value={sort}
                                 onChange={(e) => setSort(e.target.value)}
-                                className="w-full pl-12 pr-4 py-3.5 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all appearance-none cursor-pointer"
+                                className="w-full pl-14 pr-6 py-4 bg-black/50 border border-white/10 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-primary-600 focus:border-transparent transition-all appearance-none cursor-pointer shadow-inner"
                             >
                                 <option value="newest">Newest First</option>
                                 <option value="price-asc">Price: Low to High</option>
@@ -97,9 +97,9 @@ const ProductListing = () => {
                 {/* Products Masonry Grid - Unique Aesthetic Layout */}
                 {filteredProducts.length > 0 ? (
                     <div>
-                        <div className="flex items-center justify-between mb-6">
-                            <p className="text-gray-500">
-                                <span className="text-black font-bold">{filteredProducts.length}</span> products found
+                        <div className="flex items-center justify-between mb-8 pb-4 border-b border-white/5">
+                            <p className="text-zinc-500">
+                                <span className="text-primary-400 font-black tracking-widest">{filteredProducts.length}</span> PRODUCTS FOUND
                             </p>
                         </div>
                         {/* Masonry Grid with Dynamic Sizing */}

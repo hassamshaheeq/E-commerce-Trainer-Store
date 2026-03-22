@@ -127,12 +127,12 @@ export const sendOrderConfirmationEmail = async (order, qrCodeDataUrl) => {
                                     <div class="product-item">
                                         <strong>${item.title}</strong><br/>
                                         Size: ${item.size} | Quantity: ${item.quantity}<br/>
-                                        Price: $${(item.price * item.quantity).toFixed(2)}
+                                        Price: £${(item.price * item.quantity).toFixed(2)}
                                     </div>
                                 `).join('')}
                                 
                                 <div class="total">
-                                    Total: $${order.totalAmount.toFixed(2)}
+                                    Total: £${order.totalAmount.toFixed(2)}
                                 </div>
                             </div>
                             
@@ -153,7 +153,7 @@ export const sendOrderConfirmationEmail = async (order, qrCodeDataUrl) => {
                         </div>
                         
                         <div class="footer">
-                            <p>&copy; ${new Date().getFullYear()} ShoeStore. All rights reserved.</p>
+                            <p>&copy; ${new Date().getFullYear()} Primekicks. All rights reserved.</p>
                             <p>This is an automated email. Please do not reply.</p>
                         </div>
                     </div>
@@ -167,6 +167,37 @@ export const sendOrderConfirmationEmail = async (order, qrCodeDataUrl) => {
         return true;
     } catch (error) {
         console.error('Error sending email:', error);
+        return false;
+    }
+};
+
+// Send Contact Form Email
+export const sendContactEmail = async (contactData) => {
+    try {
+        const transporter = createTransporter();
+
+        const mailOptions = {
+            from: process.env.EMAIL_USER,
+            to: 'hassamshaheeq8@gmail.com',
+            subject: `New Contact Form Submission: ${contactData.subject || 'No Subject'}`,
+            html: `
+                <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
+                    <h2 style="color: #4f46e5;">New Contact Message</h2>
+                    <p><strong>From:</strong> ${contactData.name} (${contactData.email})</p>
+                    <p><strong>Subject:</strong> ${contactData.subject || 'N/A'}</p>
+                    <hr style="border: 0; border-top: 1px solid #eee;" />
+                    <p style="white-space: pre-wrap;">${contactData.message}</p>
+                    <hr style="border: 0; border-top: 1px solid #eee;" />
+                    <p style="font-size: 12px; color: #666;">This message was sent from the Primekicks contact form.</p>
+                </div>
+            `
+        };
+
+        await transporter.sendMail(mailOptions);
+        console.log('Contact email sent successfully to hassamshaheeq8@gmail.com');
+        return true;
+    } catch (error) {
+        console.error('Error sending contact email:', error);
         return false;
     }
 };

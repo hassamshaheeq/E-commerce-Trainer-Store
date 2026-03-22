@@ -84,7 +84,7 @@ const Cart = () => {
                                         </Link>
                                         <p className="text-gray-500 text-sm">{item.product.brand}</p>
                                         <p className="text-gray-600 mt-1">Size: {item.size}</p>
-                                        <p className="text-black font-bold mt-1">${item.price}</p>
+                                        <p className="text-black font-bold mt-1">£{item.price}</p>
                                     </div>
 
                                     <div className="flex items-center space-x-3">
@@ -123,7 +123,7 @@ const Cart = () => {
                                 <div className="space-y-3 mb-6">
                                     <div className="flex justify-between">
                                         <span className="text-gray-600">Subtotal</span>
-                                        <span className="font-semibold text-gray-900">${calculateTotal().toFixed(2)}</span>
+                                        <span className="font-semibold text-gray-900">£{calculateTotal().toFixed(2)}</span>
                                     </div>
                                     <div className="flex justify-between">
                                         <span className="text-gray-600">Shipping</span>
@@ -131,7 +131,7 @@ const Cart = () => {
                                     </div>
                                     <div className="border-t border-gray-100 pt-3 flex justify-between text-lg">
                                         <span className="font-bold text-gray-900">Total</span>
-                                        <span className="font-bold text-black">${calculateTotal().toFixed(2)}</span>
+                                        <span className="font-bold text-black">£{calculateTotal().toFixed(2)}</span>
                                     </div>
                                 </div>
 

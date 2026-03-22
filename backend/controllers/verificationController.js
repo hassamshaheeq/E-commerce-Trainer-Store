@@ -37,7 +37,7 @@ export const verifyProduct = async (req, res) => {
                 })),
                 totalAmount: order.totalAmount,
                 verified: true,
-                message: 'This product is authentic and verified by ShoeStore'
+                message: 'This product is authentic and verified by Primekicks'
             }
         });
     } catch (error) {

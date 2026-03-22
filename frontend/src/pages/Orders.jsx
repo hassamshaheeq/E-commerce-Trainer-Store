@@ -69,7 +69,7 @@ const Orders = () => {
                                         <span className={`px-4 py-2 rounded-full text-sm font-semibold ${getStatusColor(order.status)}`}>
                                             {order.status.charAt(0).toUpperCase() + order.status.slice(1)}
                                         </span>
-                                        <span className="text-2xl font-bold text-primary-600">${order.totalAmount.toFixed(2)}</span>
+                                        <span className="text-2xl font-bold text-primary-600">£{order.totalAmount.toFixed(2)}</span>
                                     </div>
 
                                     <div className="space-y-4">
@@ -84,7 +84,7 @@ const Orders = () => {
                                                     <p className="font-semibold text-white">{item.title}</p>
                                                     <p className="text-sm text-gray-400">Size: {item.size} × {item.quantity}</p>
                                                 </div>
-                                                <span className="font-semibold text-white">${(item.price * item.quantity).toFixed(2)}</span>
+                                                <span className="font-semibold text-white">£{(item.price * item.quantity).toFixed(2)}</span>
                                             </div>
                                         ))}
                                     </div>

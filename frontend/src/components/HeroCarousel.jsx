@@ -11,8 +11,8 @@ const DEFAULT_SLIDES = [
 const HeroCarousel = () => {
     const [slides, setSlides] = useState([]);
     const [settings, setSettings] = useState({
-        title: 'SHOES',
-        subtitle: 'NEW ARRIVAL'
+        title: 'PRIME KICKS',
+        subtitle: 'STEP IN. STAND OUT.'
     });
     const [currentSlide, setCurrentSlide] = useState(0);
     const [loading, setLoading] = useState(true);
@@ -60,7 +60,7 @@ const HeroCarousel = () => {
             <div
                 className="absolute inset-0 z-0"
                 style={{
-                    background: 'linear-gradient(105deg, #1a1a1a 0%, #1a1a1a 55%, #f59e0b 55%, #f59e0b 100%)'
+                    background: 'linear-gradient(105deg, #0a0a0a 0%, #0a0a0a 55%, #7c3aed 55%, #4f46e5 100%)'
                 }}
             ></div>
 
@@ -81,15 +81,15 @@ const HeroCarousel = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 h-full">
                     {/* Left Column: Text */}
                     <div className="flex flex-col justify-center items-start text-white pl-4 md:pl-12">
-                        <h3 className="text-orange-500 font-bold tracking-widest text-lg md:text-xl mb-2 uppercase">
+                        <h3 className="text-primary-400 font-black tracking-[0.2em] text-lg md:text-xl mb-4 uppercase drop-shadow-md">
                             {settings.subtitle || 'NEW ARRIVAL'}
                         </h3>
-                        <h1 className="text-6xl md:text-8xl font-black mb-4 tracking-tighter leading-none">
+                        <h1 className="text-6xl md:text-8xl font-black mb-4 tracking-tighter leading-none text-white">
                             {settings.title || 'SHOES'}
                         </h1>
-                        <div className="h-1 w-24 bg-orange-500 mb-6"></div>
+                        <div className="h-1.5 w-32 bg-primary-500 mb-8 rounded-full shadow-lg shadow-primary-500/50"></div>
                         <p className="text-gray-400 mb-8 max-w-md">
-                            www.shoestore.com
+                            www.primekicks.com
                         </p>
                         <Link
                             to="/products/latest"
@@ -105,9 +105,9 @@ const HeroCarousel = () => {
                     {/* Right Column: Image Carousel */}
                     <div className="relative flex items-center justify-center h-full">
                         {/* Circle Badge */}
-                        <div className="absolute top-1/4 left-0 md:left-10 z-20 bg-black text-white rounded-full w-24 h-24 flex flex-col items-center justify-center border-4 border-orange-500 shadow-xl transform -rotate-12">
+                        <div className="absolute top-1/4 left-0 md:left-10 z-20 bg-black text-white rounded-full w-24 h-24 flex flex-col items-center justify-center border-4 border-primary-500 shadow-2xl transform -rotate-12">
                             <span className="text-xs font-bold">SAVE</span>
-                            <span className="text-2xl font-black text-orange-500">50%</span>
+                            <span className="text-2xl font-black text-primary-400">50%</span>
                         </div>
 
                         {/* Rotating Images */}

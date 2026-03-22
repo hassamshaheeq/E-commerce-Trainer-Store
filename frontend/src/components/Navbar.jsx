@@ -40,10 +40,10 @@ const Navbar = () => {
                 <div className="flex justify-between items-center h-16">
                     {/* Logo */}
                     <Link to="/" className="flex items-center space-x-3">
-                        <div className="w-12 h-12 bg-gradient-to-br from-indigo-600 to-indigo-800 rounded-xl flex items-center justify-center shadow-lg shadow-indigo-500/30 transform hover:scale-105 transition-transform p-1.5">
-                            <img src="/shoe-logo.png" alt="ShoeStore Logo" className="w-full h-full object-contain" />
+                        <div className="w-14 h-14 rounded-2xl flex items-center justify-center overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                            <img src="/primekicks-logo.jpg" alt="Primekicks Logo" className="w-full h-full object-cover" />
                         </div>
-                        <span className="text-2xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent tracking-tight">ShoeStore</span>
+                        <span className="text-2xl font-black bg-gradient-to-r from-white via-white to-primary-400 bg-clip-text text-transparent tracking-tighter uppercase">Primekicks</span>
                     </Link>
 
                     {/* Desktop Navigation */}

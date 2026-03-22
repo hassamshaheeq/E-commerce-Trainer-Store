@@ -36,7 +36,7 @@ const AdminLayout = () => {
                 ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0`}>
                 <div className="p-6 border-b border-gray-200 flex justify-between items-center">
                     <Link to="/" className="flex items-center space-x-2">
-                        <span className="text-2xl font-bold gradient-text">ShoeStore</span>
+                        <span className="text-2xl font-bold gradient-text">Primekicks</span>
                         <span className="text-xs bg-primary-100 text-primary-700 px-2 py-1 rounded-full uppercase font-bold tracking-wider">Admin</span>
                     </Link>
                     <button onClick={() => setIsSidebarOpen(false)} className="md:hidden text-gray-500 hover:text-gray-900">

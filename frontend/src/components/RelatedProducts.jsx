@@ -118,7 +118,7 @@ const RelatedProducts = ({ currentProductId, category, brand }) => {
                                 {product.title}
                             </h3>
                             <div className="flex items-center justify-between">
-                                <span className="text-xl font-bold text-white">${product.price}</span>
+                                <span className="text-xl font-bold text-white">£{product.price}</span>
                                 {product.rating > 0 && (
                                     <div className="flex items-center gap-1">
                                         <svg className="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20">

@@ -16,6 +16,7 @@ import chatRoutes from './routes/chatRoutes.js';
 import analyticsRoutes from './routes/analyticsRoutes.js';
 import uploadRoutes from './routes/uploadRoutes.js';
 import heroRoutes from './routes/heroRoutes.js';
+import contactRoutes from './routes/contactRoutes.js';
 
 // Connect to database
 connectDB();
@@ -43,6 +44,7 @@ app.use('/api/chat', chatRoutes);
 app.use('/api/analytics', analyticsRoutes);
 app.use('/api/upload', uploadRoutes);
 app.use('/api/hero', heroRoutes);
+app.use('/api/contact', contactRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {
